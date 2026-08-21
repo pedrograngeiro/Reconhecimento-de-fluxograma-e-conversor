@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowchart-image-converter"
+version = "0.1.0"
+description = "Reconhecimento e reconstrução visual de fluxogramas a partir de imagens e PDFs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Reconhecimento de Fluxograma" }]
+dependencies = [
+  "numpy>=1.26,<3",
+  "opencv-python>=4.9,<5",
+]
+
+[project.optional-dependencies]
+ml = ["ultralytics>=8.3,<9"]
+ocr = ["pytesseract>=0.3.13,<0.4"]
+pdf = ["PyMuPDF>=1.24,<2"]
+dev = ["pytest>=8,<10"]
+full = [
+  "ultralytics>=8.3,<9",
+  "pytesseract>=0.3.13,<0.4",
+  "PyMuPDF>=1.24,<2",
+]
+
+[project.scripts]
+flowchart-converter = "flowchart_converter.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["flowchart_converter*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
