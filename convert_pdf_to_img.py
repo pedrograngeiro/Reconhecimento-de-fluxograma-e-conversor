@@ -1,10 +1,31 @@
-#converter pdf para imagem
-from pdf2image import convert_from_path
-# Caminho para o arquivo PDF
-pdf_path = 'pdf teste/pdf teste.pdf'
-# Converter o PDF para uma lista de imagens (uma imagem por página)
-images = convert_from_path(pdf_path)
-# Salvar cada imagem em um arquivo separado
-for i, image in enumerate(images):
-    image.save(f'pagina_{i + 1}.png', 'PNG')
-print("PDF convertido para imagens com sucesso!")
+"""Extrai páginas de um PDF como PNGs para inspeção ou anotação."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+import cv2
+
+from flowchart_converter.preprocessing import load_pages
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("pdf", type=Path)
+    parser.add_argument("--output-dir", type=Path, default=Path("pages"))
+    parser.add_argument("--dpi", type=int, default=200)
+    args = parser.parse_args()
+
+    pages = load_pages(args.pdf, dpi=args.dpi)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    for page in pages:
+        destination = args.output_dir / f"{args.pdf.stem}-page-{page.number:03d}.png"
+        if not cv2.imwrite(str(destination), page.image):
+            raise RuntimeError(f"Não foi possível salvar: {destination}")
+        print(f"gerado: {destination}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
