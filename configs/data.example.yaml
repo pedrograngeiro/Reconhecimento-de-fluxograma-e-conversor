@@ -1,0 +1,13 @@
+# Copie este arquivo para o diretório do seu dataset e ajuste `path`.
+path: ../data/flowchart
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: process
+  1: decision
+  2: terminator
+  3: input_output
+  4: connector
+  5: arrow_head
