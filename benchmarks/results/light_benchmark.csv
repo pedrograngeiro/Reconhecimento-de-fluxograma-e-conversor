@@ -1,0 +1,5 @@
+file,width_px,height_px,megapixels,size_bytes,segments,decode_median_ms,decode_p95_ms,lines_median_ms,lines_p95_ms,light_total_median_ms,light_total_p95_ms,repeats
+01_decision.png,960,720,0.6912,7901,12,4.524,5.777,3.855,5.418,8.525,10.054,10
+02_program_flow.png,960,1358,1.3037,102430,179,13.917,14.757,10.043,12.036,24.005,24.752,10
+03_polybool_algorithm.png,676,204,0.1379,8286,154,0.608,0.68,3.248,3.75,4.833,5.521,10
+04_ebay_automation.png,1516,1181,1.7904,376315,850,13.615,15.431,28.805,35.171,44.145,50.373,10
