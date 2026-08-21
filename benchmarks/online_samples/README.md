@@ -12,7 +12,8 @@ licenças das imagens prevalecem sobre a licença geral deste repositório.
 1. `01_decision.png`: uma única forma de decisão; controle simples/negativo.
 2. `02_program_flow.png`: fluxo vertical com ramificações.
 3. `03_polybool_algorithm.png`: grafo horizontal pequeno com textos.
-4. `04_ebay_automation.png`: diagrama grande, colorido e com imagens embutidas.
+4. `04_choose_free_license.png`: fluxo de decisão grande, colorido e com várias
+   ramificações.
 
 Os dois arquivos derivados de SVG do Wikimedia têm transparência. O OpenCV atual
 descarta o canal alfa ao usar `IMREAD_COLOR`, deixando áreas transparentes

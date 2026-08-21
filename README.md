@@ -210,3 +210,14 @@ de uma conexão, a geração DOT e a orquestração do pipeline.
 
 O próximo avanço recomendado é criar um conjunto de validação ponta a ponta com
 grafos esperados e medir precisão/recall das conexões, além do mAP do detector.
+
+## Licenciamento
+
+O código original deste repositório é distribuído sob a licença MIT. As imagens
+de benchmark mantêm suas licenças individuais, documentadas em
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+As dependências opcionais de detecção e PDF não são relicenciadas pela MIT deste
+projeto. Consulte [Licenciamento das dependências](docs/LICENSING.md) antes de
+distribuir ou operar o pipeline completo, especialmente em produto comercial ou
+de código fechado.

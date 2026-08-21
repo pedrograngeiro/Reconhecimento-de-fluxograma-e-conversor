@@ -1,16 +1,16 @@
 # Resultado preliminar
 
-Medição executada em 20 de agosto de 2026 com OpenCV 4.13.0, uma thread, duas
+Medição executada em 21 de agosto de 2026 com OpenCV 4.13.0, uma thread, duas
 iterações de aquecimento e dez repetições por imagem.
 
 | Imagem | Resolução | MP | Segmentos | Mediana total | p95 total |
 |---|---:|---:|---:|---:|---:|
-| `01_decision.png` | 960 × 720 | 0,6912 | 12 | 8,525 ms | 10,054 ms |
-| `02_program_flow.png` | 960 × 1.358 | 1,3037 | 179 | 24,005 ms | 24,752 ms |
-| `03_polybool_algorithm.png` | 676 × 204 | 0,1379 | 154 | 4,833 ms | 5,521 ms |
-| `04_ebay_automation.png` | 1.516 × 1.181 | 1,7904 | 850 | 44,145 ms | 50,373 ms |
+| `01_decision.png` | 960 × 720 | 0,6912 | 12 | 8,505 ms | 9,671 ms |
+| `02_program_flow.png` | 960 × 1.358 | 1,3037 | 179 | 23,039 ms | 23,536 ms |
+| `03_polybool_algorithm.png` | 676 × 204 | 0,1379 | 154 | 4,293 ms | 4,453 ms |
+| `04_choose_free_license.png` | 974 × 1.200 | 1,1688 | 923 | 29,504 ms | 33,050 ms |
 
-A soma das medianas é 81,508 ms para as quatro imagens. Esse número cobre apenas
+A soma das medianas é 65,341 ms para as quatro imagens. Esse número cobre apenas
 leitura e detecção de segmentos em cache aquecido. O comando completo levou mais
 tempo porque fez aquecimento e 10 repetições de cada etapa.
 
@@ -27,6 +27,6 @@ somente para caracterizar a carga computacional desta medição.
 | PDF | PyMuPDF ausente |
 | SVG/PNG final | executável Graphviz ausente |
 
-Por isso, 81,508 ms é um limite inferior, não o tempo ponta a ponta. Para um dado
+Por isso, 65,341 ms é um limite inferior, não o tempo ponta a ponta. Para um dado
 defensável no artigo, a próxima medição deve usar o `best.pt` real, lote 1,
 `device=cpu`, OCR configurado e as mesmas quatro imagens.

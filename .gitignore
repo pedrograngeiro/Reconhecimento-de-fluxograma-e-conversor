@@ -13,6 +13,16 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Segredos e credenciais locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
 # Dados, modelos e artefatos gerados
 runs/
 flow-chart/
