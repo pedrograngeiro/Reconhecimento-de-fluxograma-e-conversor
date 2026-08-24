@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+test-tmp/
 .coverage
 .venv/
 venv/
@@ -32,6 +33,7 @@ pdf teste/
 output/
 pages/
 *.pt
+!models/flowchart-yolov8n/best.pt
 resultado_fluxograma.png
 pagina_*.png
 
