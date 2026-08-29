@@ -10,6 +10,8 @@ abaixo.
 | `02_program_flow.png` | Manuela knoop, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Flowchart_example.svg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | Rasterização PNG a 960 px do SVG original |
 | `03_polybool_algorithm.png` | Sean Connelly e contribuidores do [PolyBoolJS](https://github.com/velipso/polybooljs) | MIT | Arquivo original, sem alteração conhecida |
 | `04_choose_free_license.png` | Vassia Atanassova (Spiritia), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Choose-free-license-flowchart.png) | Domínio público (PD-self) | Arquivo original, sem alteração |
+| `05_flowchart_cc0.png` | Abbas2024, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:FlowChart.svg) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Rasterização PNG a 830 px do SVG original |
+| `06_emergency_call_pd.png` | Tokikake, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Flowchart_for_a_999_emergency_call.svg) | Domínio público (PD-self) | Rasterização PNG a 960 px do SVG original |
 
 As rasterizações de `01_decision.png` e `02_program_flow.png` continuam sob as
 respectivas licenças CC BY-SA indicadas na tabela. A atribuição não implica

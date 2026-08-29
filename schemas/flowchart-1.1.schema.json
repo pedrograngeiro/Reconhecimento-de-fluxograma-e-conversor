@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowchart-converter:schema:1.1",
+  "title": "Grafo publicável de fluxograma",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "nodes", "edges"],
+  "properties": {
+    "schema_version": { "const": "1.1" },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "metadata": { "$ref": "#/$defs/metadata" }
+  },
+  "$defs": {
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "bbox": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": {
+          "enum": [
+            "process",
+            "decision",
+            "terminator",
+            "input_output",
+            "connector",
+            "unknown"
+          ]
+        },
+        "text": { "type": "string", "default": "" },
+        "bbox": { "$ref": "#/$defs/bbox" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "ocr_confidence": { "$ref": "#/$defs/confidence" },
+        "source_type": { "type": "string", "minLength": 1 }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source", "target"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "default": "" },
+        "branch": { "enum": ["yes", "no", "default", "loop", "other"] },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "default": {},
+      "additionalProperties": true,
+      "properties": {
+        "title": { "type": "string" },
+        "language": { "type": "string" },
+        "source": { "type": "string" },
+        "page": { "type": "integer", "minimum": 1 },
+        "visual_standard": { "const": "1.0" },
+        "canvas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width_px", "height_px"],
+          "properties": {
+            "width_px": { "type": "integer", "minimum": 1 },
+            "height_px": { "type": "integer", "minimum": 1 },
+            "dpi": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "detections": { "type": "integer", "minimum": 0 },
+        "arrowheads": { "type": "integer", "minimum": 0 },
+        "line_segments": { "type": "integer", "minimum": 0 },
+        "unknown_symbols": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["node_id", "source_type"],
+            "properties": {
+              "node_id": { "type": "string", "minLength": 1 },
+              "source_type": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -30,6 +30,15 @@ def build_parser() -> argparse.ArgumentParser:
         help="Formato renderizado; pode ser repetido. Padrão: svg.",
     )
     parser.add_argument("--rankdir", choices=("TB", "BT", "LR", "RL"), default="TB")
+    parser.add_argument("--page-size", choices=("content", "a4"), default="content")
+    parser.add_argument(
+        "--orientation",
+        choices=("portrait", "landscape"),
+        default="portrait",
+    )
+    parser.add_argument(
+        "--output-dpi", type=int, default=300, help="Resolução da saída PNG."
+    )
     return parser
 
 
@@ -45,6 +54,9 @@ def main(argv: list[str] | None = None) -> int:
         dpi=args.dpi,
         formats=tuple(args.formats or ("svg",)),
         rankdir=args.rankdir,
+        page_size=args.page_size,
+        orientation=args.orientation,
+        render_dpi=args.output_dpi,
     )
     try:
         results = FlowchartConverter(config).convert(args.input)

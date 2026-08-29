@@ -1,0 +1,17 @@
+digraph flowchart {
+  rankdir=TB;
+  graph [bgcolor="white", pad="0.35", nodesep="0.55", ranksep="0.75", splines=ortho, outputorder=edgesfirst];
+  edge [color="#475569", fontcolor="#334155", penwidth="1.6", arrowsize="0.75", arrowhead=normal, fontname="Arial", fontsize="10"];
+  "n1" [label="Início", shape=ellipse, fontname="Arial", fontsize="11", color="#15803D", fillcolor="#DCFCE7", fontcolor="#0F172A", penwidth="1.8", style="filled", margin="0.18,0.12"];
+  "n2" [label="Receber solicitação", shape=parallelogram, fontname="Arial", fontsize="11", color="#6D28D9", fillcolor="#EDE9FE", fontcolor="#0F172A", penwidth="1.8", style="filled", margin="0.18,0.12"];
+  "n3" [label="Validar dados", shape=box, fontname="Arial", fontsize="11", color="#1D4ED8", fillcolor="#DBEAFE", fontcolor="#0F172A", penwidth="1.8", style="rounded,filled", margin="0.18,0.12"];
+  "n4" [label="Dados completos?", shape=diamond, fontname="Arial", fontsize="11", color="#B45309", fillcolor="#FEF3C7", fontcolor="#0F172A", penwidth="1.8", style="filled", margin="0.18,0.12"];
+  "n5" [label="Solicitar correção", shape=box, fontname="Arial", fontsize="11", color="#1D4ED8", fillcolor="#DBEAFE", fontcolor="#0F172A", penwidth="1.8", style="rounded,filled", margin="0.18,0.12"];
+  "n6" [label="Fim", shape=ellipse, fontname="Arial", fontsize="11", color="#15803D", fillcolor="#DCFCE7", fontcolor="#0F172A", penwidth="1.8", style="filled", margin="0.18,0.12"];
+  "n1" -> "n2";
+  "n2" -> "n3";
+  "n3" -> "n4";
+  "n4" -> "n5" [label="Não"];
+  "n5" -> "n2";
+  "n4" -> "n6" [label="Sim"];
+}

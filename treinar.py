@@ -53,7 +53,9 @@ def main() -> int:
         batch=args.batch,
         workers=args.workers,
         device=args.device,
-        project=str(args.project),
+        # O Ultralytics resolve projetos relativos a partir de sua configuração
+        # global. Use um caminho absoluto para manter os artefatos neste projeto.
+        project=str(args.project.resolve()),
         name=args.name,
         seed=args.seed,
         deterministic=True,

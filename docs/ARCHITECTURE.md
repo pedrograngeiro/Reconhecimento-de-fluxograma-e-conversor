@@ -49,7 +49,7 @@ que um valor fixo. O algoritmo não cria arestas quando não há linha visível.
 
 ### `models.py`
 
-Define o contrato entre as etapas:
+Define o contrato entre as etapas e aceita os schemas legado 1.0 e atual 1.1:
 
 - `BBox`: geometria em pixels;
 - `Detection`: saída independente do detector;
@@ -59,20 +59,37 @@ Define o contrato entre as etapas:
 Uma aresta nunca pode referenciar um nó ausente. IDs são determinísticos pela
 ordem visual dos nós, de cima para baixo e da esquerda para a direita.
 
+O schema 1.1 exige tipos semânticos canônicos. `bbox` e confianças são evidências
+opcionais da entrada; o renderizador não as interpreta como coordenadas de saída.
+Aliases do detector são normalizados antes da criação do grafo e classes
+desconhecidas tornam-se `unknown`, preservando o rótulo original em `source_type`.
+
 ### `rendering.py`
 
-Gera DOT sem depender do executável Graphviz. Quando `dot` está disponível, gera
-SVG, PNG ou PDF. A forma visual é escolhida pela classe semântica:
+Expõe a interface profunda `publish_graph(graph, options)`, que valida o grafo,
+gera os artefatos auditáveis e esconde a serialização DOT e a execução do
+Graphviz. Quando `dot` está disponível, gera SVG, PNG ou PDF. A forma visual é
+escolhida pela classe semântica:
 
-| Classe | Graphviz |
-|---|---|
-| `process` ou desconhecida | retângulo arredondado |
-| `decision` | losango |
-| `terminator` / `start_end` | elipse |
-| `input_output` | paralelogramo |
-| `connector` | círculo |
+| Classe | Graphviz | Cor de apoio |
+|---|---|---|
+| `process` | retângulo arredondado | azul |
+| `decision` | losango | âmbar |
+| `terminator` / `start_end` | elipse | verde |
+| `input_output` | paralelogramo | violeta |
+| `connector` | círculo | cinza |
+| `unknown` | retângulo arredondado | cinza |
 
 SVG é a saída padrão porque preserva vetores e texto selecionável.
+O [padrão visual](VISUAL_STANDARD.md) concentra cores, redação das ações e regras
+de layout sem alterar o schema do grafo.
+
+### `render_cli.py`
+
+Lê novamente um JSON nos schemas 1.0 ou 1.1 e passa o grafo validado ao mesmo
+módulo de renderização. Esse seam permite revisar texto e conexões no JSON e
+republicar SVG, PDF ou PNG sem executar detector, OCR ou topologia novamente.
+Também define o perfil de página (`content` ou `a4`), orientação e DPI do PNG.
 
 ### `pipeline.py` e `cli.py`
 

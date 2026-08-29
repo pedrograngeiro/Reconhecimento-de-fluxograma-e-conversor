@@ -26,6 +26,7 @@ secrets/
 # Dados, modelos e artefatos gerados
 runs/
 flow-chart/
+flow-chart-document/
 data/
 modelo treinado/
 pdf teste/

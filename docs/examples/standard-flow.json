@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.1",
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "terminator",
+      "text": "Início",
+      "bbox": [200, 20, 400, 80],
+      "confidence": 1.0
+    },
+    {
+      "id": "n2",
+      "type": "input_output",
+      "text": "Receber solicitação",
+      "bbox": [180, 120, 420, 180],
+      "confidence": 1.0
+    },
+    {
+      "id": "n3",
+      "type": "process",
+      "text": "Validar dados",
+      "bbox": [180, 220, 420, 280],
+      "confidence": 1.0
+    },
+    {
+      "id": "n4",
+      "type": "decision",
+      "text": "Dados completos?",
+      "bbox": [180, 320, 420, 440],
+      "confidence": 1.0
+    },
+    {
+      "id": "n5",
+      "type": "process",
+      "text": "Solicitar correção",
+      "bbox": [500, 350, 740, 410],
+      "confidence": 1.0
+    },
+    {
+      "id": "n6",
+      "type": "terminator",
+      "text": "Fim",
+      "bbox": [200, 500, 400, 560],
+      "confidence": 1.0
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n2",
+      "confidence": 1.0,
+      "label": ""
+    },
+    {
+      "id": "e2",
+      "source": "n2",
+      "target": "n3",
+      "confidence": 1.0,
+      "label": ""
+    },
+    {
+      "id": "e3",
+      "source": "n3",
+      "target": "n4",
+      "confidence": 1.0,
+      "label": ""
+    },
+    {
+      "id": "e4",
+      "source": "n4",
+      "target": "n5",
+      "confidence": 1.0,
+      "label": "Não",
+      "branch": "no"
+    },
+    {
+      "id": "e5",
+      "source": "n5",
+      "target": "n2",
+      "confidence": 1.0,
+      "label": ""
+    },
+    {
+      "id": "e6",
+      "source": "n4",
+      "target": "n6",
+      "confidence": 1.0,
+      "label": "Sim",
+      "branch": "yes"
+    }
+  ],
+  "metadata": {
+    "title": "Exemplo do padrão visual",
+    "visual_standard": "1.0"
+  }
+}

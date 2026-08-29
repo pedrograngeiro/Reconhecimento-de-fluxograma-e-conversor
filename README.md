@@ -19,6 +19,8 @@ pesos YOLO e do dataset, que não fazem parte do repositório.
 O modelo antigo com classes `node` e `arrow_head` continua compatível. Para que o
 novo desenho preserve formas diferentes, recomenda-se treinar as classes
 `process`, `decision`, `terminator`, `input_output`, `connector` e `arrow_head`.
+O pipeline publica os cinco primeiros como símbolos canônicos; `arrow_head` serve
+somente para inferir arestas. Classes inesperadas tornam-se `unknown` para revisão.
 
 ## Como funciona
 
@@ -40,7 +42,21 @@ imagem/PDF
 ```
 
 Detalhes e decisões estão em [Arquitetura](docs/ARCHITECTURE.md). As orientações
-de anotação e treinamento estão em [Dataset e avaliação](docs/DATASET.md).
+de anotação e treinamento estão em [Dataset e avaliação](docs/DATASET.md). A
+aparência das saídas segue o [Padrão visual](docs/VISUAL_STANDARD.md).
+
+## Exemplos originais
+
+O diretório [`fluxogramas-exemplos`](fluxogramas-exemplos/) contém quatro
+diagramas originais criados para demonstração e avaliação manual do projeto:
+
+- [atendimento de suporte](fluxogramas-exemplos/original-atendimento-suporte.png);
+- [aprovação de compra](fluxogramas-exemplos/original-aprovacao-compra.png);
+- [rotina de estudos](fluxogramas-exemplos/original-rotina-estudos.png);
+- [publicação de conteúdo](fluxogramas-exemplos/original-publicacao-conteudo.png).
+
+A proveniência e o propósito de cada imagem estão documentados no
+[README dos exemplos](fluxogramas-exemplos/README.md).
 
 ## Requisitos
 
@@ -113,6 +129,9 @@ Opções importantes:
 | `--tesseract-cmd CAMINHO` | informa o executável quando não está no `PATH` |
 | `--rankdir TB` | direção do novo layout: `TB`, `BT`, `LR` ou `RL` |
 | `--format svg` | formato visual; pode ser repetido |
+| `--page-size content` | página ajustada ao conteúdo ou limitada a `a4` |
+| `--orientation portrait` | orientação `portrait` ou `landscape` |
+| `--output-dpi 300` | resolução da saída PNG |
 
 Os atalhos legados `python fluxo.py` e `python testar.py` aceitam os mesmos
 argumentos.
@@ -131,11 +150,23 @@ output/
 Um PDF produz um conjunto por página, como
 `documento-page-001.json` e `documento-page-001.svg`.
 
+Um JSON revisado pode ser renderizado novamente sem executar detecção ou OCR:
+
+```powershell
+flowchart-render output\triagem.json `
+  --output-dir output\padronizado `
+  --format svg `
+  --format pdf `
+  --format png `
+  --page-size a4 `
+  --dpi 300
+```
+
 O JSON segue este formato versionado:
 
 ```json
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "nodes": [
     {
       "id": "n1",
@@ -143,6 +174,11 @@ O JSON segue este formato versionado:
       "text": "Está aprovado?",
       "bbox": [100, 200, 310, 290],
       "confidence": 0.94
+    },
+    {
+      "id": "n2",
+      "type": "terminator",
+      "text": "Fim"
     }
   ],
   "edges": [
@@ -151,12 +187,17 @@ O JSON segue este formato versionado:
       "source": "n1",
       "target": "n2",
       "confidence": 0.81,
-      "label": ""
+      "label": "Sim",
+      "branch": "yes"
     }
   ],
   "metadata": {}
 }
 ```
+
+No schema 1.1, `bbox` e confianças são opcionais porque registram a evidência do
+reconhecimento, não o layout publicado. JSONs 1.0 continuam aceitos. Consulte o
+[contrato formal](schemas/flowchart-1.1.schema.json).
 
 ## Treinamento
 

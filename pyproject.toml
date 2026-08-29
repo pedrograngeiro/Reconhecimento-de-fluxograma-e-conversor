@@ -33,6 +33,7 @@ full = [
 
 [project.scripts]
 flowchart-converter = "flowchart_converter.cli:main"
+flowchart-render = "flowchart_converter.render_cli:main"
 
 [tool.setuptools.packages.find]
 include = ["flowchart_converter*"]

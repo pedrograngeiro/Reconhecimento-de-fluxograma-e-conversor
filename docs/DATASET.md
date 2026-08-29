@@ -77,6 +77,18 @@ experimento:
 - métricas e matriz de confusão;
 - caminho do `best.pt` resultante.
 
+Para um teste inicial do pipeline, sem substituir a coleta de exemplos reais,
+gere o pequeno conjunto sintético local:
+
+```powershell
+python scripts/generate_synthetic_dataset.py
+```
+
+O comando cria 72 imagens de treino, 18 de validação e 18 de teste em
+`flow-chart/`, que é ignorado pelo Git. As métricas desse conjunto medem apenas
+a capacidade de aprender os desenhos gerados; não representam desempenho em
+fluxogramas reais.
+
 Treino novo:
 
 ```powershell
