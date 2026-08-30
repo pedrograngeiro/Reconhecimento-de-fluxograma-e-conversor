@@ -60,6 +60,6 @@ autor do projeto e registra:
 - parâmetros, métricas e limitações do treinamento;
 - necessidade de cumprir a AGPL aplicável ao checkpoint.
 
-Antes do merge, o model card deve ser atualizado para remover referências à
-licença MIT atual do repositório e declarar diretamente `AGPL-3.0-only` para o
+O model card foi atualizado na própria branch pelo commit `8d5fb8d` para remover
+a referência antiga à MIT e declarar diretamente `AGPL-3.0-only` para o
 checkpoint, sem apagar os avisos do dataset e da Ultralytics.
