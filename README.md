@@ -54,6 +54,7 @@ aparência das saídas segue o [Padrão visual](docs/VISUAL_STANDARD.md).
 | criar um dataset e treinar ou retomar o YOLO | [Dataset, treinamento e avaliação](docs/DATASET.md) |
 | entender o JSON, os módulos e o pipeline | [Arquitetura](docs/ARCHITECTURE.md) |
 | conhecer formas, cores e regras da saída | [Padrão visual](docs/VISUAL_STANDARD.md) |
+| entender licenças do código, modelos, dependências e imagens | [Licenciamento](docs/LICENSING.md) |
 
 Se esta é a primeira execução, comece pelo
 [`flowchart-render` com o JSON incluído no projeto](docs/GUIA_DE_USO.md#4-primeiro-teste).
@@ -267,11 +268,17 @@ grafos esperados e medir precisão/recall das conexões, além do mAP do detecto
 
 ## Licenciamento
 
-O código original deste repositório é distribuído sob a licença MIT. As imagens
-de benchmark mantêm suas licenças individuais, documentadas em
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+O código e a documentação originais deste projeto são distribuídos sob a
+[GNU Affero General Public License v3.0](LICENSE), na variante
+`AGPL-3.0-only`. Copyright (C) 2026 Pedro Grangeiro.
 
-As dependências opcionais de detecção e PDF não são relicenciadas pela MIT deste
-projeto. Consulte [Licenciamento das dependências](docs/LICENSING.md) antes de
-distribuir ou operar o pipeline completo, especialmente em produto comercial ou
-de código fechado.
+Versões publicadas até o commit `a4080b2` permanecem disponíveis sob os termos
+MIT que as acompanhavam. O relicenciamento não cancela permissões já concedidas
+para essas versões.
+
+Dependências, modelos, datasets e imagens de terceiros mantêm suas próprias
+licenças. As imagens de benchmark estão detalhadas em
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Consulte o
+[guia de licenciamento](docs/LICENSING.md) e o
+[registro do relicenciamento](docs/RELICENCIAMENTO.md) antes de distribuir
+pesos ou incorporar novos dados.

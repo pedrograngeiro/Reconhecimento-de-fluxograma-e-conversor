@@ -1,8 +1,9 @@
 # Avisos de terceiros
 
-A licença MIT na raiz cobre o código e a documentação originais deste projeto.
-Ela não substitui as licenças individuais das imagens de benchmark listadas
-abaixo.
+A licença AGPL-3.0-only na raiz cobre o código e a documentação originais deste
+projeto a partir do relicenciamento. Versões publicadas até `a4080b2` permanecem
+disponíveis sob a licença MIT que as acompanhava. Nenhuma dessas licenças
+substitui as licenças individuais das imagens de benchmark listadas abaixo.
 
 | Arquivo | Autor/origem | Licença | Alteração neste repositório |
 |---|---|---|---|
