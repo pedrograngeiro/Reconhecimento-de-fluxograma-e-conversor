@@ -48,8 +48,8 @@ documentos muito diferentes dos exemplos de treinamento.
 
 ## Licenciamento
 
-O dataset declara licença Apache-2.0. O checkpoint foi derivado de pesos e da
-implementação Ultralytics YOLO; ele não é abrangido automaticamente pela licença
-MIT do código deste repositório. Consulte [`docs/LICENSING.md`](../../docs/LICENSING.md)
-e cumpra a AGPL-3.0 ou obtenha a licença comercial aplicável antes de redistribuir
-ou usar o modelo em um produto incompatível com a AGPL.
+O dataset FC-Detection mantém sua licença Apache-2.0. O checkpoint foi derivado
+de pesos e da implementação Ultralytics YOLO e é distribuído por este projeto sob
+`AGPL-3.0-only`. Consulte [`docs/LICENSING.md`](../../docs/LICENSING.md). A licença
+do checkpoint não substitui os termos do dataset, dos pesos-base ou da ferramenta
+de treinamento.
