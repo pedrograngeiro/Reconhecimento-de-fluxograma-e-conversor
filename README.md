@@ -45,6 +45,19 @@ Detalhes e decisões estão em [Arquitetura](docs/ARCHITECTURE.md). As orientaç
 de anotação e treinamento estão em [Dataset e avaliação](docs/DATASET.md). A
 aparência das saídas segue o [Padrão visual](docs/VISUAL_STANDARD.md).
 
+## Documentação
+
+| Quero... | Consulte |
+|---|---|
+| instalar, fazer o primeiro teste e converter imagem ou PDF | [Guia de uso](docs/GUIA_DE_USO.md) |
+| saber onde colocar exemplos, imagens e anotações | [Guia de uso — Pastas](docs/GUIA_DE_USO.md#2-pastas-onde-colocar-cada-arquivo) |
+| criar um dataset e treinar ou retomar o YOLO | [Dataset, treinamento e avaliação](docs/DATASET.md) |
+| entender o JSON, os módulos e o pipeline | [Arquitetura](docs/ARCHITECTURE.md) |
+| conhecer formas, cores e regras da saída | [Padrão visual](docs/VISUAL_STANDARD.md) |
+
+Se esta é a primeira execução, comece pelo
+[`flowchart-render` com o JSON incluído no projeto](docs/GUIA_DE_USO.md#4-primeiro-teste).
+
 ## Exemplos originais
 
 O diretório [`fluxogramas-exemplos`](fluxogramas-exemplos/) contém quatro

@@ -1,9 +1,12 @@
-# Copie este arquivo para o diretório do seu dataset e ajuste `path`.
-path: ../data/flowchart
+# Execute o treino a partir da raiz do projeto. O Ultralytics resolve este
+# caminho como a raiz do dataset. Um caminho absoluto também é aceito.
+path: data/flowchart
+# Estes caminhos são relativos a `path`.
 train: images/train
 val: images/val
 test: images/test
 
+# A ordem deve ser a mesma usada no primeiro número de cada anotação YOLO.
 names:
   0: process
   1: decision

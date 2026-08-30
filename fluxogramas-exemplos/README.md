@@ -7,6 +7,21 @@ de terceiros foi usada como referência, entrada ou alvo de edição.
 Elas podem ser usadas para demonstração, avaliação manual do pipeline e criação
 de casos de regressão. Não fazem parte do dataset de treinamento atual.
 
+Para testar uma delas depois de treinar o modelo:
+
+```powershell
+flowchart-converter fluxogramas-exemplos\original-aprovacao-compra.png `
+  --model runs\flowchart\detector\weights\best.pt `
+  --output-dir output\aprovacao
+```
+
+Novas imagens de demonstração podem ser colocadas nesta pasta quando forem
+próprias ou tiverem licença e proveniência documentadas. Para que uma imagem
+participe do treinamento, ela também precisa ser anotada e colocada na estrutura
+YOLO descrita em [Dataset e treinamento](../docs/DATASET.md). O
+[Guia de uso](../docs/GUIA_DE_USO.md) explica a diferença entre exemplos,
+dataset e saídas geradas.
+
 | Arquivo | Tema e composição solicitados |
 |---|---|
 | `original-atendimento-suporte.png` | fluxo horizontal de atendimento, com decisão de urgência e ramos que se reencontram |
