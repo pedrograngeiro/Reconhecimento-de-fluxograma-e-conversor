@@ -13,8 +13,10 @@ O resultado não é apenas uma imagem anotada. Para cada página são gerados:
 ## Estado do projeto
 
 Esta é a primeira versão funcional do conversor. O pipeline e suas regras
-geométricas têm testes automatizados, mas a qualidade final ainda depende dos
-pesos YOLO e do dataset, que não fazem parte do repositório.
+geométricas têm testes automatizados. Um modelo YOLO de referência treinado com
+o FC-Detection está disponível em
+[`models/flowchart-yolov8n/best.pt`](models/flowchart-yolov8n/best.pt); consulte
+o [model card](models/flowchart-yolov8n/README.md) para métricas e limitações.
 
 O modelo antigo com classes `node` e `arrow_head` continua compatível. Para que o
 novo desenho preserve formas diferentes, recomenda-se treinar as classes
@@ -113,21 +115,21 @@ python -m pip install -e ".[pdf]"  # leitura de PDF
 
 ```powershell
 flowchart-converter pagina_1.png `
-  --model "modelo treinado/best.pt" `
+  --model "models/flowchart-yolov8n/best.pt" `
   --output-dir output
 ```
 
 Também é possível executar sem instalar o comando:
 
 ```powershell
-python -m flowchart_converter pagina_1.png --model "modelo treinado/best.pt"
+python -m flowchart_converter pagina_1.png --model "models/flowchart-yolov8n/best.pt"
 ```
 
 Para PDF e mais de um formato de saída:
 
 ```powershell
 flowchart-converter documento.pdf `
-  --model "modelo treinado/best.pt" `
+  --model "models/flowchart-yolov8n/best.pt" `
   --format svg `
   --format png `
   --dpi 250
@@ -235,6 +237,23 @@ python treinar.py `
   --data flow-chart/data.yaml `
   --model runs/flowchart/detector/weights/last.pt `
   --resume
+```
+
+Para deixar o treinamento executando por um período longo no Windows, use o
+script abaixo. Ele instala o extra `ml`, impede a suspensão enquanto o processo
+estiver ativo, permite que a tela apague, bloqueia a sessão e retoma
+automaticamente `last.pt` quando o checkpoint existir:
+
+```powershell
+.\treinar_fim_de_semana.ps1
+```
+
+Por padrão, ele procura `flow-chart/data.yaml`, treina por 100 épocas na CPU e
+grava os resultados em `runs/flowchart/fim-de-semana`. Os parâmetros podem ser
+ajustados, por exemplo:
+
+```powershell
+.\treinar_fim_de_semana.ps1 -Data C:\datasets\flowchart\data.yaml -Epochs 150 -Batch 8
 ```
 
 Para extrair páginas de um PDF antes de anotá-las:
